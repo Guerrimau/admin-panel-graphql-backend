@@ -15,6 +15,12 @@ type Project {
     area: String!
 }
 
+type Admin {
+    _id: ID!
+    email: String!
+    password: String!
+}
+
 type Query {
     "Regresa un arreglo con todos los usuarios"
     getUsers: [ User ]
@@ -69,4 +75,6 @@ type Mutation {
     updateProject( _id: ID!, input: UpdateProjectInput!): Project
     "Eliminar proyecto"
     deleteProject( _id: ID! ): String
+    "Login Admin"
+    authAdminLogin( email: String!, password: String! ): String
 }

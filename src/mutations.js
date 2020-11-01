@@ -78,6 +78,21 @@ module.exports = {
             console.log( error )
         }
         return "Se ha eliminado con exito"
+    },
+    authAdminLogin: async( root, { email, password }) => {
+        let db;
+        try {
+            db = await connectDB()
+            let res = await db.collection('admins').findOne({ email: email })
+            if( res.email === email && res.password === password ){
+                return "correcto"
+            } else {
+                return "error"
+            }
+        } catch (error) {
+            console.log( error )
+        }
+        return "error"
     }
 };
 
