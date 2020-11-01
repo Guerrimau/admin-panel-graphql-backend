@@ -1,0 +1,72 @@
+type User {
+    _id: ID!
+    name: String!
+    lastname: String!
+    email: String!
+    age: Int!
+    area: String!
+}
+
+type Project {
+    _id: ID!
+    name: String!
+    description: String!
+    duration: String!
+    area: String!
+}
+
+type Query {
+    "Regresa un arreglo con todos los usuarios"
+    getUsers: [ User ]
+    "Regresa a un solo usuario"
+    getUser: User
+    "Regresa los proyectos actuales"
+    getProjects: [ Project ]
+    "Regresa un solo proyecto"
+    getProject: Project
+}
+
+input UserInput {
+    name: String!
+    lastname: String!
+    email: String!
+    age: Int!
+    area: String!
+}
+
+input UpdateUserInput {
+    name: String
+    lastname: String
+    email: String
+    age: Int
+    area: String
+}
+
+input ProjectInput { 
+    name: String!
+    description: String!
+    duration: String!
+    area: String!
+}
+
+input UpdateProjectInput {
+    name: String
+    description: String
+    duration: String
+    area: String
+}
+
+type Mutation {
+    "Crear usuario"
+    createUser( input: UserInput! ): User
+    "Actualizar usuario"
+    updateUser( _id: ID!, input: UpdateUserInput!): User
+    "Eliminar usuario"
+    deleteUser( _id: ID! ): String
+    "Crear proyecto"
+    createProject( input: ProjectInput! ): Project
+    "Actualizar proyecto"
+    updateProject( _id: ID!, input: UpdateProjectInput!): Project
+    "Eliminar proyecto"
+    deleteProject( _id: ID! ): String
+}
