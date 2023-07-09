@@ -2,9 +2,10 @@
 
 const { MongoClient } = require('mongodb');
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
+const { DB_CONNECTION_STRING } = process.env;
 
-const mongoUrl = `mongodb+srv://${ DB_USER }:${ DB_PASSWORD }@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`;
+const mongoUrl = DB_CONNECTION_STRING;
+
 let connection;
 
 async function connectDB() {
